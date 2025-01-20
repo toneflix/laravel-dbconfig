@@ -27,10 +27,10 @@ abstract class TestCase extends Orchestra
         }
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\'.
+            fn(string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\' .
                 class_basename(
                     $modelName
-                ).'Factory'
+                ) . 'Factory'
         );
     }
 
@@ -47,20 +47,20 @@ abstract class TestCase extends Orchestra
      *
      * @return void
      */
-    public function refreshDatabase()
-    {
-        if (config('database.default')) {
-            $this->beforeRefreshingDatabase();
+    // public function refreshDatabase()
+    // {
+    //     if (config('database.default')) {
+    //         $this->beforeRefreshingDatabase();
 
-            if ($this->usingInMemoryDatabase()) {
-                $this->restoreInMemoryDatabase();
-            }
+    //         if ($this->usingInMemoryDatabase()) {
+    //             $this->restoreInMemoryDatabase();
+    //         }
 
-            $this->refreshTestDatabase();
+    //         $this->refreshTestDatabase();
 
-            $this->afterRefreshingDatabase();
-        }
-    }
+    //         $this->afterRefreshingDatabase();
+    //     }
+    // }
 
     protected function getPackageProviders($app)
     {
