@@ -113,7 +113,7 @@ class Configuration extends Model
      * @return \Illuminate\Support\Collection
      */
     public static function setConfig(
-        string|array $key = null,
+        string|array|null $key = null,
         mixed $value = null,
         bool $loadSecret = false
     ) {

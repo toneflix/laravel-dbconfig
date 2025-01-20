@@ -46,7 +46,7 @@ class Configure
      * @return ($key is null|array ? Collection : ($key is string ? mixed : null))
      */
     public static function config(
-        string|array $key = null,
+        string|array|null $key = null,
         mixed $default = null,
         bool $loadSecret = false
     ): Collection|string|int|float|array|null {
