@@ -13,7 +13,7 @@ if (! function_exists('dbconfig')) {
      * @return ($key is null ? Collection : ($key is string ? mixed : null))
      */
     function dbconfig(
-        string|array|null $key = null,
+        string|array $key = null,
         mixed $default = null,
         bool $loadSecret = false
     ): Collection|string|int|float|array|null {

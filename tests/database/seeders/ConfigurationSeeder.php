@@ -15,7 +15,8 @@ class ConfigurationSeeder extends Seeder
      */
     public function run()
     {
-        Cache::forget('configuration::build');
+        Cache::forget('laravel-dbconfig.configurations::build');
+        Cache::flush();
         Configuration::insert([
             [
                 'key' => 'app_logo',

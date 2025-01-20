@@ -27,7 +27,6 @@ class ConfigTest extends TestCase
         $this->artisan('app:config-create foo "Foo" bar string -f')->execute();
 
         Configure::config(['foo' => 'baz']);
-
         $this->assertEquals(Configure::config('foo'), 'baz');
     }
 
@@ -45,7 +44,6 @@ class ConfigTest extends TestCase
 
         $this->assertIsArray(dbconfig()->toArray());
         $this->assertArrayHasKey('foo', dbconfig());
-        // dd(dbconfig()->toArray(), config('toneflix-fileable.collections'));
     }
 
     public function test_can_set_file_as_a_config_value(): void
