@@ -1,0 +1,87 @@
+{
+    "name": "toneflix-code/laravel-dbconfig",
+    "description": "A Laravel package that allows you to configure your app using database entries.",
+    "keywords": [
+        "api",
+        "database",
+        "config",
+        "settings",
+        "configuration",
+        "updates",
+        "save",
+        "fix"
+    ],
+    "homepage": "https://github.com/toneflix/laravel-dbconfig",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Toneflix Code",
+            "email": "code@toneflix.com.ng",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1|^8.2|^8.3",
+        "illuminate/support": "^9.0|^10.0|^11.0",
+        "toneflix-code/laravel-fileable": "^2.1.4"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "illuminate/contracts": "^9.0|^10.0|^11.0",
+        "illuminate/routing": "*",
+        "laravel/pint": "^1.15",
+        "orchestra/testbench": "^7.4|^8.0|^9.4",
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-laravel": "^2.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "ToneflixCode\\DbConfig\\": "src"
+        },
+        "files": [
+            "helpers/config.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ToneflixCode\\DbConfig\\Tests\\": "tests",
+            "ToneflixCode\\DbConfig\\Tests\\Database\\Factories\\": "tests/database/factories",
+            "ToneflixCode\\DbConfig\\Tests\\Database\\Seeders\\": "tests/database/seeders"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-pay-pocket --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": [
+            "@composer run prepare",
+            "@php vendor/bin/testbench workbench:build --ansi"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "@composer run build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage --display-errors --testdox",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ToneflixCode\\DbConfig\\DbConfigServiceProvider"
+            ],
+            "aliases": {
+                "ResourceModifier": "ToneflixCode\\DbConfig\\Facades\\DbConfig"
+            }
+        }
+    }
+}
