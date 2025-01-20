@@ -1,6 +1,6 @@
 {
     "name": "toneflix-code/laravel-dbconfig",
-    "description": "A Laravel package that allows you to configure your app using database entries.",
+    "description": "A Laravel package that allows you to configure your app using database entries with support for Arrays and files.",
     "keywords": [
         "api",
         "database",
