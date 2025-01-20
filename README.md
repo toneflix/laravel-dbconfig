@@ -1,4 +1,4 @@
-# Laravel Resource Modifier
+# Laravel DbConfig (Database Configuration)
 
 [![Test & Lint](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml)
 [![Latest Stable Version](https://img.shields.io/packagist/v/toneflix-code/laravel-dbconfig.svg)](https://packagist.org/packages/toneflix-code/laravel-dbconfig)
@@ -9,7 +9,7 @@
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml/badge.svg) -->
 
-A Laravel package that allows you to configure your app using database entries.
+A Laravel package that allows you to configure your app using database entries with support for Arrays and files.
 
 ## Features
 
