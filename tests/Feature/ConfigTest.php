@@ -51,7 +51,7 @@ class ConfigTest extends TestCase
         $file = UploadedFile::fake()->image('avatar.jpg');
         $config = Configure::config(['app_logo' => $file]);
 
-        if (stripos($config[], '[1]') !== -1) {
+        if (stripos($config['app_logo'], '[1]') !== -1) {
             $this->assertStringContainsString('[1]', $config['app_logo']);
         } else {
             $this->assertStringEndsWith('.jpg', $config['app_logo']);
