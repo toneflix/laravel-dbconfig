@@ -65,7 +65,7 @@
         ],
         "analyse": "vendor/bin/phpstan analyse",
         "test": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage --display-errors --testdox",
-        "test-coverage": "vendor/bin/pest --coverage",
+        "test-coverage": "vendor/bin/pest --coverage-clover",
         "format": "vendor/bin/pint"
     },
     "config": {

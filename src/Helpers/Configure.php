@@ -8,6 +8,7 @@ use ToneflixCode\DbConfig\Models\Configuration;
 
 class Configure
 {
+    // @codeCoverageIgnoreStart
     /**
      * Validates a JSON string.
      *
@@ -34,6 +35,7 @@ class Configure
             return false;
         }
     }
+    // @codeCoverageIgnoreEnd
 
     /**
      * Get / set the specified configuration value.

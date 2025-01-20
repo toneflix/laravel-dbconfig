@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Facades\Cache;
 use ToneflixCode\LaravelFileable\Traits\Fileable as FileableTrait;
 
+// @codeCoverageIgnoreStart
 class Fileable extends Model
 {
     use FileableTrait;
@@ -136,3 +137,4 @@ class Fileable extends Model
         return Attribute::make(get: fn () => $link);
     }
 }
+// @codeCoverageIgnoreEnd

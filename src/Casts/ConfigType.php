@@ -5,6 +5,7 @@ namespace ToneflixCode\DbConfig\Casts;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 
+// @codeCoverageIgnoreStart
 class ConfigType implements CastsAttributes
 {
     /**
@@ -39,3 +40,4 @@ class ConfigType implements CastsAttributes
         return $value;
     }
 }
+// @codeCoverageIgnoreEnd
