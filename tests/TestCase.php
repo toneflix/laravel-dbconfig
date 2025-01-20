@@ -27,10 +27,10 @@ abstract class TestCase extends Orchestra
         }
 
         Factory::guessFactoryNamesUsing(
-            fn(string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\' .
+            fn (string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\'.
                 class_basename(
                     $modelName
-                ) . 'Factory'
+                ).'Factory'
         );
     }
 
