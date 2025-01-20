@@ -183,6 +183,24 @@ Whe the configuration type is `files`, the files will be uploaded and you will g
 
 The library uses `toneflix-code/laravel-fileable` for storing files, you can configure the upload path and othe options by modifying the `upload_collection` property of the `laravel-dbconfig` configuration file or add a `dbconfig` collection to the `toneflix-fileable` configuration.
 
+### Saving configuration with file values
+
+To save a configuration with a file value, simply pass an instance of `Illuminate\Http\UploadedFile` as a value when setting the configuration, the lirary takes care of the rest.
+
+```php
+use ToneflixCode\DbConfig\Helpers\Configure;
+
+Configure::config(key: ['logo' => request()->file('logo')]);
+```
+
+Or
+
+```php
+dbconfig(key: ['logo' => request()->file('logo')]);
+```
+
+And that's it folks, happy coding...
+
 ## Testing
 
 ```bash
