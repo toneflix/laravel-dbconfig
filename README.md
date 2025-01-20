@@ -13,8 +13,8 @@ A Laravel package that allows you to configure your app using database entries.
 
 ## Features
 
--   Support file uploads.
--   Has dbconfig() helper.
+-   Support for single and multiple file uploads.
+-   Has `dbconfig()` helper function.
 -   Support for custom tables.
 -   Create configurations with `php artisan app:config-create` command.
 -   Support for Arrays.
