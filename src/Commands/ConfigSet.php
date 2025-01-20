@@ -4,9 +4,9 @@ namespace ToneflixCode\DbConfig\Commands;
 
 use App\Helpers\Strings;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Attribute\AsCommand;
 use ToneflixCode\DbConfig\Helpers\Configure;
 use ToneflixCode\DbConfig\Models\Configuration;
-use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'app:config-set')]
 class ConfigSet extends Command
@@ -56,7 +56,7 @@ class ConfigSet extends Command
          * Request for value if missing
          */
         $value ??= $this->ask(
-            'What do you want to set as the value for ' . $option . '?',
+            'What do you want to set as the value for '.$option.'?',
         );
 
         $type = Configuration::where('key', $option)->pluck('type')->first();
