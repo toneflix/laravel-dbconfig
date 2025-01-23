@@ -55,7 +55,7 @@ class ConfigSet extends Command
          * Request for value if missing
          */
         $value ??= $this->ask(
-            'What do you want to set as the value for ' . $option . '?',
+            'What do you want to set as the value for '.$option.'?',
         );
 
         $type = Configuration::where('key', $option)->pluck('type')->first();
