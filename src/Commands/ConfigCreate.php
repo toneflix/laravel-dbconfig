@@ -130,7 +130,6 @@ class ConfigCreate extends Command
 
         return 0;
     }
-<<<<<<< HEAD
 
     public function getKey(?string $question = null): string
     {
@@ -144,6 +143,4 @@ class ConfigCreate extends Command
 
         return $key;
     }
-=======
->>>>>>> 48f3fd7b733269b67997b6a5d5d83225ccca0256
 }
