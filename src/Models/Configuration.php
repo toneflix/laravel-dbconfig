@@ -70,6 +70,19 @@ class Configuration extends Model
     ];
 
     /**
+     * Get the attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'type' => \ToneflixCode\DbConfig\Casts\ConfigType::class,
+        'value' => \ToneflixCode\DbConfig\Casts\ConfigValue::class,
+        'secret' => 'boolean',
+        'autogrow' => 'boolean',
+        'choices' => \Illuminate\Database\Eloquent\Casts\AsCollection::class,
+    ];
+
+    /**
      * Get the table associated with the model.
      *
      * @return $this
@@ -77,22 +90,6 @@ class Configuration extends Model
     public function getTable()
     {
         return config('laravel-dbconfig.tables.configurations', 'configurations');
-    }
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'type' => \ToneflixCode\DbConfig\Casts\ConfigType::class,
-            'value' => \ToneflixCode\DbConfig\Casts\ConfigValue::class,
-            'secret' => 'boolean',
-            'autogrow' => 'boolean',
-            'choices' => \Illuminate\Database\Eloquent\Casts\AsCollection::class,
-        ];
     }
 
     public static function boot(): void
@@ -179,8 +176,8 @@ class Configuration extends Model
      */
     public static function buildConfig(): \Illuminate\Support\Collection
     {
-        # 'disable_cache'
-        return static::all()->filter(fn($conf) => ! $conf->secret)->mapWithKeys(function ($item) {
+        // 'disable_cache'
+        return static::get()->filter(fn($conf) => ! $conf->secret)->mapWithKeys(function ($item) {
             return [$item->key => $item->value];
         });
     }
