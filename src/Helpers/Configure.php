@@ -2,6 +2,7 @@
 
 namespace ToneflixCode\DbConfig\Helpers;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use ToneflixCode\DbConfig\Models\Configuration;

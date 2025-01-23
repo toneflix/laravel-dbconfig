@@ -2,7 +2,6 @@
 
 namespace ToneflixCode\DbConfig\Commands;
 
-use App\Helpers\Strings;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
 use ToneflixCode\DbConfig\Helpers\Configure;
@@ -56,7 +55,7 @@ class ConfigSet extends Command
          * Request for value if missing
          */
         $value ??= $this->ask(
-            'What do you want to set as the value for '.$option.'?',
+            'What do you want to set as the value for ' . $option . '?',
         );
 
         $type = Configuration::where('key', $option)->pluck('type')->first();
@@ -74,7 +73,7 @@ class ConfigSet extends Command
          * Check if the provided value is valid
          */
         $validate = match (true) {
-            in_array($type, ['json', 'array']) => is_array($value) || Strings::jsonValidate($value),
+            in_array($type, ['json', 'array']) => is_array($value) || Configure::jsonValidate($value),
             in_array($type, ['string', 'text']) => is_string($value),
             in_array($type, ['bool', 'boolean']) => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             in_array($type, ['number', 'integer', 'int']) => filter_var($value, FILTER_VALIDATE_INT),
