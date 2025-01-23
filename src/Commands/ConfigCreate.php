@@ -80,7 +80,7 @@ class ConfigCreate extends Command
 
             // Cast the default value to the correct type
             if ($type === 'bool') {
-                $value = in_array($value, ['true', true, 1]);
+                $value = filter_var($value, FILTER_VALIDATE_BOOLEAN);
             } elseif (in_array($type, ['number', 'integer'])) {
                 $value = (int) $value;
             } elseif ($type === 'float') {

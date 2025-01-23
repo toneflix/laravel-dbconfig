@@ -46,6 +46,13 @@ class ConfigTest extends TestCase
         $this->assertArrayHasKey('foo', dbconfig());
     }
 
+    public function test_can_set_boolean_as_a_config_value(): void
+    {
+        $this->artisan('dbconfig:create boo "Boo" 1 bool -f')->execute();
+
+        $this->assertIsBool(Configure::config('boo'));
+    }
+
     public function test_can_set_file_as_a_config_value(): void
     {
         $file = UploadedFile::fake()->image('avatar.jpg');

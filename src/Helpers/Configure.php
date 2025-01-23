@@ -50,12 +50,12 @@ class Configure
         string|array|null $key = null,
         mixed $default = null,
         bool $loadSecret = false
-    ): Collection|string|int|float|array|null {
-        $config = Configuration::build($loadSecret);
-
+    ): Collection|string|int|float|array|bool|null {
         if (is_array($key)) {
             return Configuration::setConfig($key);
         }
+
+        $config = Configuration::build($loadSecret);
 
         if (is_null($key)) {
             return $config;

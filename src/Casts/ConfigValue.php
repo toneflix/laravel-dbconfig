@@ -33,8 +33,9 @@ class ConfigValue implements CastsAttributes
         return match (true) {
             ($model->secret ?? false) && $value === '***********' => $model->value ?: '',
             is_array($value) => json_encode($value, JSON_FORCE_OBJECT),
-            is_bool($value) => $value ? 0 : 1,
-            in_array(mb_strtolower($type), ['number', 'integer', 'float', 'int']) => (int) $value,
+            filter_var($value, FILTER_VALIDATE_BOOLEAN) => $value ? 1 : 0,
+            mb_strtolower($type) === 'float' => (float) $value,
+            in_array(mb_strtolower($type), ['number', 'integer', 'float']) => (int) $value,
             default => (string) $value,
         };
     }
@@ -50,8 +51,8 @@ class ConfigValue implements CastsAttributes
 
         return match (true) {
             $model->secret && request()->boolean('hide-secret') => '***********',
-            $type === 'file' => $model->files->map(fn ($f) => $f->files['file'])->first(null, $default),
-            $type === 'files' => $model->files->map(fn ($f) => $f->files['file']),
+            $type === 'file' => $model->files->map(fn($f) => $f->files['file'])->first(null, $default),
+            $type === 'files' => $model->files->map(fn($f) => $f->files['file']),
             in_array(mb_strtolower($type), ['bool', 'boolean']) => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             in_array(mb_strtolower($type), ['json', 'array']) => collect(json_decode($value, true)),
             in_array(mb_strtolower($type), ['number', 'integer', 'float', 'int']) => (int) $value,
