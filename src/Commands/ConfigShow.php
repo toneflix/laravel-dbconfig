@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Symfony\Component\Console\Attribute\AsCommand;
 use ToneflixCode\DbConfig\Helpers\Configure;
 
+// @codeCoverageIgnoreStart
 #[AsCommand(name: 'dbconfig:show')]
 class ConfigShow extends ConfigShowCommand
 {
@@ -74,3 +75,4 @@ class ConfigShow extends ConfigShowCommand
         }
     }
 }
+// @codeCoverageIgnoreEnd
