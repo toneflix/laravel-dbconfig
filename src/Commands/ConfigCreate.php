@@ -38,6 +38,25 @@ class ConfigCreate extends Command
     protected $description = 'Creates a new configuration option.';
 
     /**
+     * A list of all valid config types
+     *
+     * @var array<int,string>
+     */
+    protected $valid_types = [
+        'textarea',
+        'string',
+        'file',
+        'files',
+        'json',
+        'bool',
+        'text',
+        'number',
+        'integer',
+        'float',
+        'int',
+    ];
+
+    /**
      * Execute the console command.
      */
     public function handle()
@@ -52,22 +71,10 @@ class ConfigCreate extends Command
         ] = $this->options();
 
         // Get or request for the config type
-        $type = $this->argument('type') ?: $this->choice('What type of value should this config expect?', [
-            'textarea',
-            'string',
-            'file',
-            'files',
-            'json',
-            'bool',
-            'text',
-            'number',
-            'integer',
-            'float',
-            'int',
-        ]);
+        $type = $this->getConfigType();
 
         // Get or request for the config key
-        $key = $this->getKey();
+        $key = $this->getConfigKey();
 
         // Get or request for the config title
         $title = $this->argument('title') ?:
@@ -131,16 +138,33 @@ class ConfigCreate extends Command
         return 0;
     }
 
-    public function getKey(?string $question = null): string
+    public function getConfigKey(?string $question = null): string
     {
         $question ??= 'What should be the key for this config (snake_cased or whatever you like)?';
 
         $key = $this->argument('key') ?: $this->ask($question);
 
         if (Configuration::where('key', $key)->exists()) {
-            return $this->getKey('This configuration key already exists and cannot be used, please enter another key.');
+            return $this->getConfigKey('This configuration key already exists and cannot be used, please enter another key.');
         }
 
         return $key;
+    }
+
+    public function getConfigType($default = true, ?string $question = null): string
+    {
+        $question ??= 'What type of value should this config expect?';
+
+        if ($default) {
+            $type = $this->argument('type') ?: $this->choice($question, $this->valid_types);
+        } else {
+            $type = $this->choice($question, $this->valid_types);
+        }
+
+        if (!in_array($type, $this->valid_types)) {
+            return $this->getConfigType(false, "The type you provided `{$type}` is not supported, choose from the list.");
+        }
+
+        return $type;
     }
 }

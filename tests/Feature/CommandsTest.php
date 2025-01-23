@@ -28,6 +28,15 @@ class CommandsTest extends TestCase
             ->assertExitCode(0);
     }
 
+    public function test_can_show_default_type_list_if_user_manually_a_non_suported_type(): void
+    {
+        $this->artisan('dbconfig:create foo "Foo" bar stringr')
+            ->expectsQuestion('The type you provided `stringr` is not supported, choose from the list.', 'string')
+            ->expectsQuestion('Add an optional hint?', 'This is a fix')
+            ->expectsConfirmation('Are you sure you want to continue creating the foo config option?', 'yes')
+            ->assertExitCode(0);
+    }
+
     public function test_will_ask_for_a_new_key_if_provided_key_is_taken_when_creating_config_with_artisan(): void
     {
         $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
