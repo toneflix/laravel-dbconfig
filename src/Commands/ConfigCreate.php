@@ -67,8 +67,7 @@ class ConfigCreate extends Command
         ]);
 
         // Get or request for the config key
-        $key = $this->argument('key') ?:
-            $this->ask('What should be the key for this config (snake_cased or whatever you like)?');
+        $key = $this->getKey();
 
         // Get or request for the config title
         $title = $this->argument('title') ?:
@@ -101,7 +100,7 @@ class ConfigCreate extends Command
 
         // Fail the request of either of $key or $title is empty
         if (! $key || ! $title) {
-            $this->info('We could not save your config, please provide a valid key and title.');
+            $this->error('We could not save your config, please provide a valid key and title.');
 
             return 1;
         }
@@ -130,5 +129,18 @@ class ConfigCreate extends Command
         $this->info("Your configuration option \"{$key}\" has been created successfully.");
 
         return 0;
+    }
+
+    public function getKey(?string $question = null): string
+    {
+        $question ??= 'What should be the key for this config (snake_cased or whatever you like)?';
+
+        $key = $this->argument('key') ?: $this->ask($question);
+
+        if (Configuration::where('key', $key)->exists()) {
+            return $this->getKey('This configuration key already exists and cannot be used, please enter another key.');
+        }
+
+        return $key;
     }
 }
