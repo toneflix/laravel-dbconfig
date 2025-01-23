@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.2 - 2025-01-23
+
+- Lower restriction on fileable dependency.
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.1...1.0.2
+
 ## 1.0.1 - 2025-01-20
 
 - fix: use previously missing Symfony\Component\Console\Attribute\AsCommand
