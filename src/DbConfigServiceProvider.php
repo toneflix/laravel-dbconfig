@@ -55,10 +55,7 @@ class DbConfigServiceProvider extends ServiceProvider
 
             AboutCommand::add('Laravel DbConfig', static fn() => array_filter([
                 'Version' => InstalledVersions::getPrettyVersion('toneflix-code/laravel-dbconfig'),
-                'Cached' => AboutCommand::format(
-                    value: Cache::has('laravel-dbconfig.configurations::build') ? 'YES' : 'NO',
-                    console: $formatYesOrNo
-                ),
+                'Cached' => AboutCommand::format(Cache::has('laravel-dbconfig.configurations::build'), $formatYesOrNo),
                 'Configs Created' => Configuration::count('id'),
             ]));
 
