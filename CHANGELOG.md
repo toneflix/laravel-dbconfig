@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.4 - 2025-01-23
+
+- [feat: Ask for a different key when creating config with app:config-create if the key already exists.](https://github.com/toneflix/laravel-dbconfig/commit/46df9ca706fa689733a381a1a7394f2d4682077e)
+- [feat: Add cache status to about command.](https://github.com/toneflix/laravel-dbconfig/commit/3831b9b8caeb4fc3c4cccbf7175f3ebf6f199464)
+- [feat: Add count of created configs to about commnad.](https://github.com/toneflix/laravel-dbconfig/commit/e3316ab791998d8924d84202835c8072948acd3a)
+- [chore: Remove uselsess coments.](https://github.com/toneflix/laravel-dbconfig/commit/12b90bb48ac9e9e977aba76e76ba24bd2529ced6)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.2...1.0.4
+
 ## 1.0.3 - 2025-01-23
 
 - [Reorder the the argument request when creating configurations.](https://github.com/toneflix/laravel-dbconfig/commit/bdee2ee7592db05b64dd45a9bc01221519682409)
