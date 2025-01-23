@@ -39,7 +39,46 @@ class CommandsTest extends TestCase
             ->expectsQuestion('What should be the title for this config?', 'Foo')
             ->expectsQuestion('What should be the default value for this config?', 'bar')
             ->expectsQuestion('Add an optional hint?', 'This is a hint')
-            ->expectsQuestion('Are you sure you want to continue creating the foobar config option?', 'yes')
+            ->expectsConfirmation('Are you sure you want to continue creating the foobar config option?', 'yes')
             ->assertExitCode(0);
+    }
+
+    public function test_can_delete_a_config_option_with_artisan(): void
+    {
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
+
+        $this->assertEquals(dbconfig('foo'), 'bar');
+
+        $this->artisan('dbconfig:purge foo')
+            ->expectsConfirmation('Are you sure you want to delete the `foo` config option?', 'yes')
+            ->assertExitCode(0);
+
+        $this->assertNull(dbconfig('foo'));
+    }
+
+    public function test_can_cancel_deleting_a_config_option_with_artisan(): void
+    {
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
+
+        $this->assertEquals(dbconfig('foo'), 'bar');
+
+        $this->artisan('dbconfig:purge foo')
+            ->expectsConfirmation('Are you sure you want to delete the `foo` config option?', 'no')
+            ->assertExitCode(0);
+
+        $this->assertEquals(dbconfig('foo'), 'bar');
+    }
+
+    public function test_can_purge_configuration_table_with_artisan(): void
+    {
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
+
+        $this->assertEquals(dbconfig('foo'), 'bar');
+
+        $this->artisan('dbconfig:purge')
+            ->expectsConfirmation('You have not provided any configuration option key, do you want to purge the entire `configurations` table?', 'yes')
+            ->assertExitCode(0);
+
+        $this->assertEmpty(dbconfig()->toArray());
     }
 }
