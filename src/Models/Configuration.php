@@ -4,6 +4,7 @@ namespace ToneflixCode\DbConfig\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
@@ -148,18 +149,12 @@ class Configuration extends Model
 
     public static function build($loadSecret = false)
     {
-        if ($loadSecret) {
-            return static::all()->mapWithKeys(function ($item) {
-                return [$item->key => $item->value];
-            });
+        if (config('laravel-dbconfig.disable_cache', false) || $loadSecret) {
+            return static::buildConfig($loadSecret);
         }
 
         if (app()->runningUnitTests()) {
             Cache::flush();
-        }
-
-        if (config('laravel-dbconfig.disable_cache', false)) {
-            return static::buildConfig();
         }
 
         return Cache::remember(
@@ -174,12 +169,15 @@ class Configuration extends Model
      *
      * @return \Illuminate\Support\Collection<TMapWithKeysKey, TMapWithKeysValue>
      */
-    public static function buildConfig(): \Illuminate\Support\Collection
+    public static function buildConfig(bool $loadSecret = false): \Illuminate\Support\Collection
     {
-        // 'disable_cache'
-        return static::get()->filter(fn($conf) => ! $conf->secret)->mapWithKeys(function ($item) {
-            return [$item->key => $item->value];
-        });
+        return static::all()
+            ->when($loadSecret, function (Collection $configs) {
+                return $configs->filter(fn($conf) => ! $conf->secret);
+            })
+            ->mapWithKeys(function ($item) {
+                return [$item->key => $item->value];
+            });
     }
 
     public function files()
