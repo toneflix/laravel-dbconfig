@@ -16,10 +16,10 @@ A Laravel package that allows you to configure your app using database entries w
 -   Support for single and multiple file uploads.
 -   Has `dbconfig()` helper function.
 -   Support for custom tables.
--   Create configurations with `php artisan app:config-create` command.
+-   Create configurations with `php artisan dbconfig:create` command.
 -   Support for Arrays.
 -   Configuration is fully cached.
--   Update config with `php artisan app:config-set` command.
+-   Update config with `php artisan dbconfig:set` command.
 
 ## Installation
 
@@ -75,14 +75,14 @@ Once you're doing with initial setup, run `php artisan migrate` to migrate your 
 
 #### Artisan Command
 
-To create configuration options, simple run the command `php artisan app:config-create`, you will be presented with interactive questions to help you create your config option.
+To create configuration options, simple run the command `php artisan dbconfig:create`, you will be presented with interactive questions to help you create your config option.
 Alternatively, you can also pass the option directly to the command to create without prompts:
 
 ```bash
-php artisan app:config-create [options] [--] [<key> [<title> [<value> [<type> [<hint> [<choices>...]]]]]] [--group [--secret [--cols [--max [--force]]]]]
+php artisan dbconfig:create [options] [--] [<key> [<title> [<value> [<type> [<hint> [<choices>...]]]]]] [--group [--secret [--cols [--max [--force]]]]]
 ```
 
-When you run the `app:config-create` passing all options directly, you will still be required to confirm, where you do not want to to be required to confirm, you can pass the `--force` option, which will run the command without prompts.
+When you run the `dbconfig:create` passing all options directly, you will still be required to confirm, where you do not want to to be required to confirm, you can pass the `--force` option, which will run the command without prompts.
 
 #### Database seeding
 

@@ -10,21 +10,21 @@ class ConfigTest extends TestCase
 {
     public function test_can_get_config_value_with_helper(): void
     {
-        $this->artisan('app:config-create foo "Foo" bar string -f')->execute();
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
 
         $this->assertEquals(dbconfig('foo'), 'bar');
     }
 
     public function test_can_get_config_value_with_configure(): void
     {
-        $this->artisan('app:config-create foo "Foo" bar string -f')->execute();
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
 
         $this->assertEquals(Configure::config('foo'), 'bar');
     }
 
     public function test_can_set_config_value_with_configure(): void
     {
-        $this->artisan('app:config-create foo "Foo" bar string -f')->execute();
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
 
         Configure::config(['foo' => 'baz']);
         $this->assertEquals(Configure::config('foo'), 'baz');
@@ -32,7 +32,7 @@ class ConfigTest extends TestCase
 
     public function test_can_get_all_config_as_array_with_configure(): void
     {
-        $this->artisan('app:config-create foo "Foo" bar string -f')->execute();
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
 
         $this->assertIsArray(Configure::config()->toArray());
         $this->assertArrayHasKey('foo', Configure::config());
@@ -40,7 +40,7 @@ class ConfigTest extends TestCase
 
     public function test_can_get_all_config_as_array_with_helper(): void
     {
-        $this->artisan('app:config-create foo "Foo" bar string -f')->execute();
+        $this->artisan('dbconfig:create foo "Foo" bar string -f')->execute();
 
         $this->assertIsArray(dbconfig()->toArray());
         $this->assertArrayHasKey('foo', dbconfig());
