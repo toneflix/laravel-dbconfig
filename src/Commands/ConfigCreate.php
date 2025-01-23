@@ -63,7 +63,7 @@ class ConfigCreate extends Command
             'number',
             'integer',
             'float',
-            'int'
+            'int',
         ]);
 
         // Get or request for the config key
@@ -75,7 +75,7 @@ class ConfigCreate extends Command
             $this->ask('What should be the title for this config?');
 
         // Get or request for the config default value then cast it to the correct type
-        if (!in_array($type, ['file', 'files', 'json'])) {
+        if (! in_array($type, ['file', 'files', 'json'])) {
             $value = $this->argument('value') ?:
                 $this->ask('What should be the default value for this config?');
 
@@ -83,9 +83,9 @@ class ConfigCreate extends Command
             if ($type === 'bool') {
                 $value = in_array($value, ['true', true, 1]);
             } elseif (in_array($type, ['number', 'integer'])) {
-                $value = (int)$value;
+                $value = (int) $value;
             } elseif ($type === 'float') {
-                $value = (float)$value;
+                $value = (float) $value;
             }
         } else {
             $value = $type === 'json' ? '{}' : null;
