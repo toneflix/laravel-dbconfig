@@ -45,5 +45,5 @@ return [
     |
     */
 
-    'disable_cache' => true
+    'disable_cache' => false,
 ];
