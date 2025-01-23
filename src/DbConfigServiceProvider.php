@@ -60,8 +60,6 @@ class DbConfigServiceProvider extends ServiceProvider
             config([
                 'toneflix-fileable.collections.dbconfig' => config('laravel-dbconfig.upload_collection'),
             ]);
-
-            // dd(config('toneflix-fileable.collections'), config('laravel-dbconfig'));
         }
     }
 
