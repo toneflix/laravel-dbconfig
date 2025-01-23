@@ -161,14 +161,28 @@ class Configuration extends Model
             Cache::flush();
         }
 
-        /** @var \Illuminate\Support\Collection<TMapWithKeysKey, TMapWithKeysValue> $config */
-        $config = Cache::remember('laravel-dbconfig.configurations::build', null, function () {
-            return static::all()->filter(fn ($conf) => ! $conf->secret)->mapWithKeys(function ($item) {
-                return [$item->key => $item->value];
-            });
-        });
+        if (config('laravel-dbconfig.disable_cache', false)) {
+            return static::buildConfig();
+        }
 
-        return $config;
+        return Cache::remember(
+            'laravel-dbconfig.configurations::build',
+            null,
+            fn() => static::buildConfig()
+        );
+    }
+
+    /**
+     * Build the configuration collection
+     *
+     * @return \Illuminate\Support\Collection<TMapWithKeysKey, TMapWithKeysValue>
+     */
+    public static function buildConfig(): \Illuminate\Support\Collection
+    {
+        # 'disable_cache'
+        return static::all()->filter(fn($conf) => ! $conf->secret)->mapWithKeys(function ($item) {
+            return [$item->key => $item->value];
+        });
     }
 
     public function files()
@@ -184,8 +198,8 @@ class Configuration extends Model
     public function multiple(): Attribute
     {
         return new Attribute(
-            get: fn () => (count($this->choices) && $this->autogrow) || ($this->type === 'array' && $this->count),
-            set: fn ($value) => [
+            get: fn() => (count($this->choices) && $this->autogrow) || ($this->type === 'array' && $this->count),
+            set: fn($value) => [
                 'autogrow' => $value,
             ],
         );

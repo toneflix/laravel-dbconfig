@@ -58,4 +58,18 @@ class ConfigTest extends TestCase
             $this->assertStringContainsString('http://localhost/storage/', $config['app_logo']);
         }
     }
+
+    public function test_configs_can_be_cached(): void
+    {
+        config(['laravel-dbconfig.disable_cache' => false]);
+
+        $this->assertNotEmpty(Configure::config()->toArray());
+    }
+
+    public function test_configs_can_be_be_non_cached(): void
+    {
+        config(['laravel-dbconfig.disable_cache' => true]);
+
+        $this->assertNotEmpty(Configure::config()->toArray());
+    }
 }

@@ -18,7 +18,7 @@ A Laravel package that allows you to configure your app using database entries w
 -   Support for custom tables.
 -   Create configurations with `php artisan dbconfig:create` command.
 -   Support for Arrays.
--   Configuration is fully cached.
+-   Configurations can be dbconfig:d.
 -   Update config with `php artisan dbconfig:set` command.
 
 ## Installation
@@ -221,7 +221,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## TODO
 
--   [x] Add cache status to about command.
+-   [x] Add dbconfig: status to about command.
 
 ## Contributing
 
