@@ -2,6 +2,13 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.7 - 2025-01-23
+
+- [feat: Add the dbconfig:purge artisan command.](https://github.com/toneflix/laravel-dbconfig/commit/34f898471cb2ef3c1929d1459ff672e434b6bdc5)
+- [feat: Add test for dbconfig:purge command.](https://github.com/toneflix/laravel-dbconfig/commit/ac2d034c2ad076200303d75c1b279db0fff506b4)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.6...1.0.7
+
 ## 1.0.6 - 2025-01-23
 
 - [fix: Fix the about command cached info.](https://github.com/toneflix/laravel-dbconfig/commit/5f26b0db465bcdefe4a4cdbfb577b18a838728ec)
