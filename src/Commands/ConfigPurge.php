@@ -4,7 +4,6 @@ namespace ToneflixCode\DbConfig\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Attribute\AsCommand;
-use ToneflixCode\DbConfig\Helpers\Configure;
 use ToneflixCode\DbConfig\Models\Configuration;
 
 #[AsCommand(name: 'dbconfig:purge')]
@@ -41,7 +40,7 @@ class ConfigPurge extends Command
 
         // Confirm if the user still wants to contine
         if (! $this->confirm($message)) {
-            $this->info("Action Cancelled.");
+            $this->info('Action Cancelled.');
 
             return 0;
         }
