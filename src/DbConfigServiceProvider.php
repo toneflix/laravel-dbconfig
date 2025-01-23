@@ -10,6 +10,7 @@ use ToneflixCode\DbConfig\Commands\ConfigCreate;
 use ToneflixCode\DbConfig\Commands\ConfigSet;
 use ToneflixCode\LaravelFileable\Media;
 use Illuminate\Support\Facades\Cache;
+use ToneflixCode\DbConfig\Models\Configuration;
 
 class DbConfigServiceProvider extends ServiceProvider
 {
@@ -53,6 +54,7 @@ class DbConfigServiceProvider extends ServiceProvider
             AboutCommand::add('Laravel DbConfig', static fn() => array_filter([
                 'Version' => InstalledVersions::getPrettyVersion('toneflix-code/laravel-dbconfig'),
                 'Cached' => Cache::has('laravel-dbconfig.configurations::build'),
+                'Configs Created' => Configuration::count('id'),
             ]));
 
             config([
