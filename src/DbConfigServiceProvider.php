@@ -7,8 +7,7 @@ use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
-use ToneflixCode\DbConfig\Commands\ConfigCreate;
-use ToneflixCode\DbConfig\Commands\ConfigSet;
+use ToneflixCode\DbConfig\Commands\{ConfigCreate, ConfigShow, ConfigSet};
 use ToneflixCode\DbConfig\Models\Configuration;
 use ToneflixCode\LaravelFileable\Media;
 
@@ -46,6 +45,7 @@ class DbConfigServiceProvider extends ServiceProvider
 
             $this->commands([
                 ConfigSet::class,
+                ConfigShow::class,
                 ConfigCreate::class,
             ]);
 

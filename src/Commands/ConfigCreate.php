@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Console\Attribute\AsCommand;
 use ToneflixCode\DbConfig\Models\Configuration;
 
-#[AsCommand(name: 'app:config-create')]
+#[AsCommand(name: 'dbconfig:create')]
 class ConfigCreate extends Command
 {
     /**
@@ -16,7 +16,7 @@ class ConfigCreate extends Command
      * @var string
      */
     protected $signature = '
-        app:config-create
+        dbconfig:create
             {key? : The key of the config option to create.}
             {title? : The title of the config option to create.}
             {value? : The default value for the config option}
