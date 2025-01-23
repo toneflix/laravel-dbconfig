@@ -57,7 +57,7 @@ class ConfigShow extends ConfigShowCommand
      */
     public function render($table)
     {
-        $data = Configure::config();
+        $data = Configure::config()->toArray();
 
         if (! is_array($data)) {
             $this->title($table, $this->formatValue($data));
