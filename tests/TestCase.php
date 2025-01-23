@@ -27,10 +27,10 @@ abstract class TestCase extends Orchestra
         }
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\'.
+            fn(string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\' .
                 class_basename(
                     $modelName
-                ).'Factory'
+                ) . 'Factory'
         );
     }
 
@@ -38,7 +38,7 @@ abstract class TestCase extends Orchestra
     {
         tap($app['config'], function (Repository $config) {
             $config->set('app.faker_locale', 'en_NG');
-            // $config->set('cache.default', 'file');
+            $config->set('cache.default', 'file');
         });
     }
 

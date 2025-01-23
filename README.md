@@ -55,7 +55,7 @@ To customize migrations, publish the migration files with:
 php artisan vendor:publish --tag="dbconfig-migrations"
 ```
 
-To customize configuration options, publish the config file with: 
+To customize configuration options, publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="dbconfig"
@@ -221,7 +221,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## TODO
 
-- Add cache status to about command.
+-   [x] Add cache status to about command.
 
 ## Contributing
 
