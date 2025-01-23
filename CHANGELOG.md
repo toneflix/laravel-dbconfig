@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.5 - 2025-01-23
+
+[feat: Format about command output.](https://github.com/toneflix/laravel-dbconfig/commit/8348967e3a416a0fd656c521680ac6cdf1206648)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.4...1.0.5
+
 ## 1.0.4 - 2025-01-23
 
 - [feat: Ask for a different key when creating config with app:config-create if the key already exists.](https://github.com/toneflix/laravel-dbconfig/commit/46df9ca706fa689733a381a1a7394f2d4682077e)
