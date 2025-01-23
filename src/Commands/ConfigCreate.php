@@ -161,7 +161,7 @@ class ConfigCreate extends Command
             $type = $this->choice($question, $this->valid_types);
         }
 
-        if (!in_array($type, $this->valid_types)) {
+        if (! in_array($type, $this->valid_types)) {
             return $this->getConfigType(false, "The type you provided `{$type}` is not supported, choose from the list.");
         }
 

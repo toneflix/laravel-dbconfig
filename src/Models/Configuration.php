@@ -160,7 +160,7 @@ class Configuration extends Model
         return Cache::remember(
             'laravel-dbconfig.configurations::build',
             null,
-            fn() => static::buildConfig()
+            fn () => static::buildConfig()
         );
     }
 
@@ -173,7 +173,7 @@ class Configuration extends Model
     {
         return static::all()
             ->when($loadSecret, function (Collection $configs) {
-                return $configs->filter(fn($conf) => ! $conf->secret);
+                return $configs->filter(fn ($conf) => ! $conf->secret);
             })
             ->mapWithKeys(function ($item) {
                 return [$item->key => $item->value];
@@ -193,8 +193,8 @@ class Configuration extends Model
     public function multiple(): Attribute
     {
         return new Attribute(
-            get: fn() => (count($this->choices) && $this->autogrow) || ($this->type === 'array' && $this->count),
-            set: fn($value) => [
+            get: fn () => (count($this->choices) && $this->autogrow) || ($this->type === 'array' && $this->count),
+            set: fn ($value) => [
                 'autogrow' => $value,
             ],
         );
