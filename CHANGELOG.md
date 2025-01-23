@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.8 - 2025-01-23
+
+- [feat: Covert Configuration model casts to property instead of method to support older versions of laravel.](https://github.com/toneflix/laravel-dbconfig/commit/efb6db3995b6f916e6bea3d03d7926b2d94db086)
+- [feat: Improve and optimize configuration loading and caching.](https://github.com/toneflix/laravel-dbconfig/commit/1fac3b1a2fe88da6342348622b39eb48b79a00f6)
+- [fix: Fix bug causing float and boolean types to return integers.](https://github.com/toneflix/laravel-dbconfig/commit/d106f8bba1942a468c809281ebade48014ce8dcb)
+- [feat: Add validation for config type when creating with dbconfig:create.](https://github.com/toneflix/laravel-dbconfig/commit/a9cf4affa3594bb8187dbd37942600cca3ea45e4)
+- [chore: Set deault cache config to false.](https://github.com/toneflix/laravel-dbconfig/commit/c769d9895d89d294a1ea484f1bc373febd3ddc77)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.7...1.0.8
+
 ## 1.0.7 - 2025-01-23
 
 - [feat: Add the dbconfig:purge artisan command.](https://github.com/toneflix/laravel-dbconfig/commit/34f898471cb2ef3c1929d1459ff672e434b6bdc5)
