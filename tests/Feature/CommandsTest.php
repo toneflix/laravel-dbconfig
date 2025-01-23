@@ -27,6 +27,7 @@ class CommandsTest extends TestCase
             ->expectsConfirmation('Are you sure you want to continue creating the foo config option?', 'yes')
             ->assertExitCode(0);
     }
+<<<<<<< HEAD
 
     public function test_will_ask_for_a_new_key_if_provided_key_is_taken_when_creating_config_with_artisan(): void
     {
@@ -42,4 +43,6 @@ class CommandsTest extends TestCase
             ->expectsQuestion('Are you sure you want to continue creating the foobar config option?', 'yes')
             ->assertExitCode(0);
     }
+=======
+>>>>>>> 48f3fd7b733269b67997b6a5d5d83225ccca0256
 }
