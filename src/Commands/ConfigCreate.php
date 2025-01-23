@@ -35,13 +35,14 @@ class ConfigCreate extends Command
      *
      * @var string
      */
-    protected $description = 'Creates a new configuration option';
+    protected $description = 'Creates a new configuration option.';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
+        // Parse the options
         [
             'max' => $max,
             'cols' => $cols,
@@ -50,34 +51,67 @@ class ConfigCreate extends Command
             'secret' => $secret,
         ] = $this->options();
 
+        // Get or request for the config type
+        $type = $this->argument('type') ?: $this->choice('What type of value should this config expect?', [
+            'textarea',
+            'string',
+            'file',
+            'files',
+            'json',
+            'bool',
+            'text',
+            'number',
+            'integer',
+            'float',
+            'int'
+        ]);
+
+        // Get or request for the config key
         $key = $this->argument('key') ?:
             $this->ask('What should be the key for this config (snake_cased or whatever you like)?');
 
+        // Get or request for the config title
         $title = $this->argument('title') ?:
             $this->ask('What should be the title for this config?');
 
-        $value = $this->argument('value') ?:
-            $this->ask('What should be the default value for this config?');
+        // Get or request for the config default value then cast it to the correct type
+        if (!in_array($type, ['file', 'files', 'json'])) {
+            $value = $this->argument('value') ?:
+                $this->ask('What should be the default value for this config?');
 
+            // Cast the default value to the correct type
+            if ($type === 'bool') {
+                $value = in_array($value, ['true', true, 1]);
+            } elseif (in_array($type, ['number', 'integer'])) {
+                $value = (int)$value;
+            } elseif ($type === 'float') {
+                $value = (float)$value;
+            }
+        } else {
+            $value = $type === 'json' ? '{}' : null;
+        }
+
+        // Get or request for the config hint
         $hint = $this->argument('hint') ?: (! $force
             ? $this->ask('Add an optional hint?')
             : null
         );
 
-        $type = $this->argument('type') ?: $this->choice('What type of value should this config expect?', ['textarea', 'string', 'file', 'files', 'json', 'bool', 'text', 'number', 'integer', 'float', 'int']);
-
         Model::unguard();
 
+        // Fail the request of either of $key or $title is empty
         if (! $key || ! $title) {
             $this->info('We could not save your config, please provide a valid key and title.');
 
             return 1;
         }
 
+        // Confirm if the user still wants to contine
         if (! $force && ! $this->confirm("Are you sure you want to continue creating the {$key} config option?")) {
             return 0;
         }
 
+        // Store the configuration option
         Configuration::updateOrCreate(['key' => $key], [
             'key' => $key,
             'title' => $title,
