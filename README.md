@@ -51,7 +51,15 @@ return [
 
 To customize migrations, publish the migration files with:
 
-Run `php artisan vendor:publish --tag="dbconfig-migrations"`
+```bash
+php artisan vendor:publish --tag="dbconfig-migrations"
+```
+
+To customize configuration options, publish the config file with: 
+
+```bash
+php artisan vendor:publish --tag="dbconfig"
+```
 
 ### Custom Tables
 
