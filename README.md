@@ -252,6 +252,10 @@ The `dbconfig:show` command will display all of the values for the database conf
 php artisan dbconfig:show
 ```
 
+### Additional
+
+You may also run the `php artisan about` command to see usefull information about your confiuration state.
+
 And that's it folks, happy coding...
 
 ## Testing
