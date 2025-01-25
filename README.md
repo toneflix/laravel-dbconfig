@@ -75,14 +75,7 @@ Once you're doing with initial setup, run `php artisan migrate` to migrate your 
 
 #### Artisan Command
 
-To create configuration options, simple run the command `php artisan dbconfig:create`, you will be presented with interactive questions to help you create your config option.
-Alternatively, you can also pass the option directly to the command to create without prompts:
-
-```bash
-php artisan dbconfig:create [options] [--] [<key> [<title> [<value> [<type> [<hint> [<choices>...]]]]]] [--group [--secret [--cols [--max [--force]]]]]
-```
-
-When you run the `dbconfig:create` passing all options directly, you will still be required to confirm, where you do not want to to be required to confirm, you can pass the `--force` option, which will run the command without prompts.
+To create configuration options from the CLI you can use the [dbconfig:create](#dbconfigcreate) Artisan command
 
 #### Database seeding
 
@@ -205,6 +198,58 @@ Or
 
 ```php
 dbconfig(key: ['logo' => request()->file('logo')]);
+```
+
+## Artisan Commands
+
+The library ships with 4 artisan commands provided to to make working with the library a little bit less straining, maybe, but let's get to it.
+
+### `dbconfig:create`
+
+The `dbconfig:create` command allows you to create new configuration options, to use, run it like in the examples below.
+
+```bash
+php artisan dbconfig:create
+```
+
+You will be presented with interactive questions to help you create your config option, alternatively, you can also pass the option definition directly to the command to create without prompts:
+
+```bash
+php artisan dbconfig:create [options] [--] [<key> [<title> [<value> [<type> [<hint> [<choices>...]]]]]] [--group [--secret [--cols [--max [--force]]]]]
+```
+
+When you run the `dbconfig:create` passing all options directly, you will still be required to confirm, where you do not want to to be required to confirm, you can pass the `--force` option, which will run the command without prompts.
+
+### `dbconfig:purge`
+
+The `dbconfig:purge` command allows you to purge or remove configuration options from the database.
+
+```bash
+php artisan dbconfig:create [<key>]
+```
+
+Running the command without arguments will cause the entire configuration table to be truncated but if you wish to only remove a particular key from the table, simply pass the key argument.
+
+### `dbconfig:set`
+
+The `dbconfig:set` command allows you to set or update the value of a configuration option.
+
+```bash
+php artisan dbconfig:set
+```
+
+You will be presented with interactive questions to help you update the value of your config option, alternatively, you can also pass the key and value arguments directly to the command to update without the prompts:
+
+```bash
+php artisan dbconfig:set [<option> [<value>]]
+```
+
+### `dbconfig:show`
+
+The `dbconfig:show` command will display all of the values for the database configurations.
+
+```bash
+php artisan dbconfig:show
 ```
 
 And that's it folks, happy coding...
