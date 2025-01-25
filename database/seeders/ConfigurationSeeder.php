@@ -16,8 +16,8 @@ class ConfigurationSeeder extends Seeder
     public function run()
     {
         Cache::forget('laravel-dbconfig.configurations::build');
-        // Configuration::updateOrCreate(['key' => $key], [
-        Configuration::insert([
+
+        Configuration::upsert([
             [
                 'key' => 'app_logo',
                 'title' => 'App Logo',
@@ -32,6 +32,6 @@ class ConfigurationSeeder extends Seeder
                 'group' => 'main',
                 'choices' => json_encode([]),
             ],
-        ]);
+        ], ['key'], ['title', 'value', 'hint', 'group', 'max', 'col', 'autogrow', 'secret', 'choices']);
     }
 }
