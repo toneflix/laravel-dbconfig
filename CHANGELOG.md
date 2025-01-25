@@ -2,11 +2,6 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
-## 1.0.10 - 2025-01-25
-
-- [feat: Use upsert method for the ConfigurationSeede](https://github.com/toneflix/laravel-dbconfig/commit/fc150633fac097e143003e85383db501ff89f8ed)
-  **Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.7...1.0.10
-
 ## 1.0.9 - 2025-01-23
 
 [fix: Fix validation for boolean values when updating config with dbconfig:set](https://github.com/toneflix/laravel-dbconfig/commit/7728715d982496af7b638b435c46d06fe30db020)
