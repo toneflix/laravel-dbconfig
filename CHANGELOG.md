@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.9 - 2025-01-23
+
+[fix: Fix validation for boolean values when updating config with dbconfig:set](https://github.com/toneflix/laravel-dbconfig/commit/7728715d982496af7b638b435c46d06fe30db020)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.8...1.0.9
+
 ## 1.0.8 - 2025-01-23
 
 - [feat: Covert Configuration model casts to property instead of method to support older versions of laravel.](https://github.com/toneflix/laravel-dbconfig/commit/efb6db3995b6f916e6bea3d03d7926b2d94db086)

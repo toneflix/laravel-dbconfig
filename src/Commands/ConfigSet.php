@@ -75,7 +75,7 @@ class ConfigSet extends Command
         $validate = match (true) {
             in_array($type, ['json', 'array']) => is_array($value) || Configure::jsonValidate($value),
             in_array($type, ['string', 'text']) => is_string($value),
-            in_array($type, ['bool', 'boolean']) => filter_var($value, FILTER_VALIDATE_BOOLEAN),
+            in_array($type, ['bool', 'boolean']) => in_array($value, [0, false, '0', 'false', 1, true, '1', 'true']),
             in_array($type, ['number', 'integer', 'int']) => filter_var($value, FILTER_VALIDATE_INT),
             default => false,
         };
@@ -102,9 +102,11 @@ class ConfigSet extends Command
         $value = Configure::config($option);
         if (is_array($value)) {
             $value = json_encode($value);
+        } elseif (is_bool($value)) {
+            $value = $value ? 'true' : 'false';
         }
 
-        $this->info(__('New configuration value for :0 is :1', [$option, $value]));
+        $this->info(__('New configuration value for `:0` is :1.', [$option, $value]));
 
         return 0;
     }

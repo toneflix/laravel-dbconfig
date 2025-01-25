@@ -16,7 +16,7 @@ if (! function_exists('dbconfig')) {
         string|array|null $key = null,
         mixed $default = null,
         bool $loadSecret = false
-    ): Collection|string|int|float|array|null {
+    ): Collection|string|int|float|array|bool|null {
         return Configure::config($key, $default, $loadSecret);
     }
 }
