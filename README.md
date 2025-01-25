@@ -75,7 +75,7 @@ Once you're doing with initial setup, run `php artisan migrate` to migrate your 
 
 #### Artisan Command
 
-To create configuration options, you can use the [dbconfig:create Artisan command](#dbconfig-create)
+To create configuration options, you can use the [dbconfig:create Artisan command](#dbconfigcreate)
 
 #### Database seeding
 
