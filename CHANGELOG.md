@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## v1.0.12 - 2025-03-15
+
+### What's Changed
+
+* build(deps): Bump codecov/codecov-action from 5.3.1 to 5.4.0 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/5
+* fix: Create the fileUrl attribute of the fileable model to prevent serialization errors.
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.11...1.0.12
+
 ## 1.0.11 - 2025-02-09
 
 ### What's Changed
