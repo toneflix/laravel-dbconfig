@@ -124,8 +124,6 @@ class Fileable extends Model
 
     /**
      * Get a shared/public URL of the image.
-     *
-     * @return Attribute
      */
     protected function fileUrl(): Attribute
     {
@@ -134,8 +132,6 @@ class Fileable extends Model
 
     /**
      * Get a shared/public URL of the image.
-     *
-     * @return Attribute
      */
     protected function sharedUrl(): Attribute
     {
