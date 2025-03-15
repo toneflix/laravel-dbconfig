@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configurations');
+        Schema::dropIfExists(config('laravel-dbconfig.tables.configurations', 'configurations'));
     }
 };

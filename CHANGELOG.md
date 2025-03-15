@@ -2,10 +2,23 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.0.11 - 2025-02-09
+
+### What's Changed
+
+* build(deps): Bump codecov/codecov-action from 5.1.2 to 5.3.1 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/2
+* build(deps): Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/3
+* build(deps): Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/4
+* fix: Fix migration bugs.
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.10...1.0.11
+
 ## 1.0.10 - 2025-01-25
 
 - [feat: Use upsert method for the ConfigurationSeede](https://github.com/toneflix/laravel-dbconfig/commit/fc150633fac097e143003e85383db501ff89f8ed)
-  **Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.7...1.0.10
+- [feat: Allow secret data to be displayed when running the dbconfig:show artisan command.](https://github.com/toneflix/laravel-dbconfig/commit/c104822126cb96b416b429506766ae0fb10d5c49)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.7...1.0.10
 
 ## 1.0.9 - 2025-01-23
 

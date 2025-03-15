@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fileables');
+        Schema::dropIfExists(config('laravel-dbconfig.tables.fileables', 'fileables'));
     }
 };

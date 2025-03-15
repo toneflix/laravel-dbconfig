@@ -9,7 +9,7 @@
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml/badge.svg) -->
 
-A Laravel package that allows you to configure your app using database entries with support for Arrays and files.
+A Laravel package that enables app configuration using database entries with support for arrays and files. Includes support for single and multiple file uploads, custom tables, and a `dbconfig` helper function.
 
 ## Features
 
@@ -251,6 +251,10 @@ The `dbconfig:show` command will display all of the values for the database conf
 ```bash
 php artisan dbconfig:show
 ```
+
+### Additional
+
+You may also run the `php artisan about` command to see usefull information about your confiuration state.
 
 And that's it folks, happy coding...
 
