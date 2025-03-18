@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.1.0 - 2025-03-18
+
+* Add support for Laravel 12
+  **Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.0.12...1.1.0
+
 ## v1.0.12 - 2025-03-15
 
 ### What's Changed
