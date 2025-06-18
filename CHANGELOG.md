@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.1.1 - 2025-06-18
+
+### What's Changed
+
+* feat: Create ConfigSync Artisan command.
+* build(deps): Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/7
+* build(deps): Bump codecov/codecov-action from 5.4.2 to 5.4.3 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/8
+* build(deps): Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot in https://github.com/toneflix/laravel-dbconfig/pull/9
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.1.0...1.1.1
+
 ## 1.1.0 - 2025-03-18
 
 * Add support for Laravel 12
