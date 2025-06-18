@@ -24,23 +24,23 @@ class DbConfigServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('laravel-dbconfig.php'),
+                __DIR__.'/../config/config.php' => config_path('laravel-dbconfig.php'),
             ], 'dbconfig');
 
             $this->publishes([
-                __DIR__ . '/../database/factories/ConfigurationFactory.php' => database_path('factories/ConfigurationFactory.php'),
-                __DIR__ . '/../database/seeders/ConfigurationSeeder.php' => database_path('seeders/ConfigurationSeeder.php'),
+                __DIR__.'/../database/factories/ConfigurationFactory.php' => database_path('factories/ConfigurationFactory.php'),
+                __DIR__.'/../database/seeders/ConfigurationSeeder.php' => database_path('seeders/ConfigurationSeeder.php'),
             ], 'dbconfig-data');
 
             $migrations = [];
             if ($this->unmigrated('create_files_table')) {
-                $migrations[__DIR__ . '/../database/migrations/2022_06_30_045718_create_files_table.php'] =
-                    database_path('migrations/' . date('Y_m_d_His', time()) . '_create_files_table.php');
+                $migrations[__DIR__.'/../database/migrations/2022_06_30_045718_create_files_table.php'] =
+                    database_path('migrations/'.date('Y_m_d_His', time()).'_create_files_table.php');
             }
 
             if ($this->unmigrated('create_configurations_table')) {
-                $migrations[__DIR__ . '/../database/migrations/2022_11_01_225856_create_configurations_table.php'] =
-                    database_path('migrations/' . date('Y_m_d_His', time()) . '_create_configurations_table.php');
+                $migrations[__DIR__.'/../database/migrations/2022_11_01_225856_create_configurations_table.php'] =
+                    database_path('migrations/'.date('Y_m_d_His', time()).'_create_configurations_table.php');
             }
 
             if (count($migrations) > 0) {
@@ -55,11 +55,11 @@ class DbConfigServiceProvider extends ServiceProvider
                 ConfigCreate::class,
             ]);
 
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-            $formatYesOrNo = fn($value) => $value ? '<fg=green;options=bold>YES</>' : '<fg=yellow;options=bold>NO</>';
+            $formatYesOrNo = fn ($value) => $value ? '<fg=green;options=bold>YES</>' : '<fg=yellow;options=bold>NO</>';
 
-            AboutCommand::add('Laravel DbConfig', static fn() => array_filter([
+            AboutCommand::add('Laravel DbConfig', static fn () => array_filter([
                 'Version' => InstalledVersions::getPrettyVersion('toneflix-code/laravel-dbconfig'),
                 'Cached' => AboutCommand::format(Cache::has('laravel-dbconfig.configurations::build'), $formatYesOrNo),
                 'Configs Created' => Configuration::count('id'),
@@ -87,10 +87,10 @@ class DbConfigServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'laravel-dbconfig');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-dbconfig');
 
         if ($this->app->runningUnitTests()) {
-            $this->mergeConfigFrom(__DIR__ . '/../config/toneflix-fileable.php', 'toneflix-fileable');
+            $this->mergeConfigFrom(__DIR__.'/../config/toneflix-fileable.php', 'toneflix-fileable');
             $this->app->singleton('laravel-fileable', function () {
                 return new Media;
             });
