@@ -29,7 +29,7 @@ class ConfigSync extends Command
     public function handle()
     {
         if (File::exists(database_path('seeders/ConfigurationSeeder.php'))) {
-            $this->call('db:seed --class=ConfigurationSeeder');
+            $this->call('db:seed', ['--class' => 'ConfigurationSeeder']);
         } else {
             $this->error('The ConfigurationSeeder class is not found.');
         }
