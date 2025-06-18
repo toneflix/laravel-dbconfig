@@ -19,8 +19,8 @@ class ConfigurationSeeder extends Seeder
 
         Configuration::upsert([
             [
-                'key' => 'app_logo',
-                'title' => 'App Logo',
+                'key' => 'app_name',
+                'title' => 'App Name',
                 'value' => null,
                 'type' => 'file',
                 'count' => null,
