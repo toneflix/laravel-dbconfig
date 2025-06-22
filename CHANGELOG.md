@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.1.2 - 2025-06-22
+
+### What's Changed
+
+* fix: Ensure the buildConfig method return secret configs when $loadSecret is true not when it is false by @3m1n3nc3 in https://github.com/toneflix/laravel-dbconfig/pull/10
+
+### New Contributors
+
+* @3m1n3nc3 made their first contribution in https://github.com/toneflix/laravel-dbconfig/pull/10
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.1.1...1.1.2
+
 ## 1.1.1 - 2025-06-18
 
 ### What's Changed
