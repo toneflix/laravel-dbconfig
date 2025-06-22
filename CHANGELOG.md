@@ -6,7 +6,9 @@ All notable changes to `laravel-dbconfig` will be documented in this file
 
 ### What's Changed
 
-* fix: Ensure the buildConfig method return secret configs when $loadSecret is true not when it is false by @3m1n3nc3 in https://github.com/toneflix/laravel-dbconfig/pull/10
+* fix: Ensure the buildConfig method return secret configs when $loadSecret is true not when it is false by @3m1n3nc3 in https://github.com/toneflix/laravel-dbconfig/pull/10 
+* feat: Add the class argument to the dbconfig:sync artisan command. by @3m1n3nc3 in https://github.com/toneflix/laravel-dbconfig/pull/11
+* docs: Document the dbconfig:sync artisan command.
 
 ### New Contributors
 
