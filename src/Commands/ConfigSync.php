@@ -14,24 +14,29 @@ class ConfigSync extends Command
      *
      * @var string
      */
-    protected $signature = 'dbconfig:sync';
+    protected $signature = '
+        dbconfig:sync
+            {class? : The seeder class to use, defaults to `ConfigurationSeeder`).}
+    ';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'An alias for `artisan db:seed --class=ConfigurationSeeder`';
+    protected $description = 'An alias for `artisan db:seed --class=ConfigurationSeeder`, optionally you can pass the required seeder class an argument.';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        if (File::exists(database_path('seeders/ConfigurationSeeder.php'))) {
-            $this->call('db:seed', ['--class' => 'ConfigurationSeeder']);
+        $class = $this->argument('class') ?: 'ConfigurationSeeder';
+
+        if (File::exists(database_path("seeders/{$class}.php"))) {
+            $this->call('db:seed', ['--class' => $class]);
         } else {
-            $this->error('The ConfigurationSeeder class is not found.');
+            $this->error("The {$class} class is not found.");
         }
     }
 }

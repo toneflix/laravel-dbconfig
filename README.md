@@ -252,6 +252,20 @@ The `dbconfig:show` command will display all of the values for the database conf
 php artisan dbconfig:show
 ```
 
+### `dbconfig:sync`
+
+The `dbconfig:sync` command is an alias for `artisan db:seed --class=ConfigurationSeeder`, it will run your configuration seeder if it exists, optionally you can pass the required seeder class an argument.
+
+```bash
+php artisan dbconfig:sync
+```
+
+OR
+
+```bash
+php artisan dbconfig:sync ConfigSeeder
+```
+
 ### Additional
 
 You may also run the `php artisan about` command to see usefull information about your confiuration state.
