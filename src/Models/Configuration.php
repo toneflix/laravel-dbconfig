@@ -171,10 +171,9 @@ class Configuration extends Model
      */
     public static function buildConfig(bool $loadSecret = false): \Illuminate\Support\Collection
     {
-        return static::all()
-            ->when($loadSecret, function (Collection $configs) {
-                return $configs->filter(fn ($conf) => ! $conf->secret);
-            })
+        return static::query()
+            ->when(! $loadSecret, fn($query) => $query->where('secret', false))
+            ->get()
             ->mapWithKeys(function ($item) {
                 return [$item->key => $item->value];
             });
