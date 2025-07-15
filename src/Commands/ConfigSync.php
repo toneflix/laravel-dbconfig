@@ -34,9 +34,11 @@ class ConfigSync extends Command
         $class = $this->argument('class') ?: 'ConfigurationSeeder';
 
         if (File::exists(database_path("seeders/{$class}.php"))) {
-            $this->call('db:seed', ['--class' => $class]);
+            $this->callSilently('db:seed', ['--class' => $class]);
+
+            $this->components->success('Syncing Complete.');
         } else {
-            $this->error("The {$class} class is not found.");
+            $this->components->error("The {$class} seeder was not found.");
         }
     }
 }
