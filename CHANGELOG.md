@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 1.1.4 - 2026-02-01
+
+### What's Changed
+
+* [fix: add null safety in multiple() method](https://github.com/toneflix/laravel-dbconfig/commit/aacaff387bf80bb9014684bb94d488a597611b3b)
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.1.3...1.1.4
+
 ## 1.1.3 - 2025-07-15
 
 ### What's Changed
