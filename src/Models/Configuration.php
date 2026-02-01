@@ -192,7 +192,7 @@ class Configuration extends Model
     public function multiple(): Attribute
     {
         return new Attribute(
-            get: fn () => (count($this->choices) && $this->autogrow) || ($this->type === 'array' && $this->count),
+            get: fn () => (count($this->choices ?? []) && $this->autogrow) || ($this->type === 'array' && $this->count),
             set: fn ($value) => [
                 'autogrow' => $value,
             ],
