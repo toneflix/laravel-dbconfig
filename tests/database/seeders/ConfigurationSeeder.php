@@ -1,10 +1,10 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Tests\Database\Seeders;
+namespace Toneflix\DbConfig\Tests\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
-use ToneflixCode\DbConfig\Models\Configuration;
+use Toneflix\DbConfig\Models\Configuration;
 
 class ConfigurationSeeder extends Seeder
 {

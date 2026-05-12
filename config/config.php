@@ -6,10 +6,10 @@ return [
     | Upload Collection
     |--------------------------------------------------------------------------
     |
-    | The library uses `toneflix-code/laravel-fileable` for storing files, you
+    | The library uses `toneflix/laravel-fileable` for storing files, you
     | can configure the upload path and the options by modifying
     | the `upload_collection` property or add a `dbconfig` collection to
-    | the `toneflix-fileable` configuration.
+    | the `toneflix/laravel-fileable` configuration.
     |
     */
 

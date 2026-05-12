@@ -1,18 +1,17 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Models;
+namespace Toneflix\DbConfig\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
-use ToneflixCode\DbConfig\Helpers\Configure;
-use ToneflixCode\LaravelFileable\Facades\Media;
+use Toneflix\DbConfig\Helpers\Configure;
+use Toneflix\LaravelFileable\Facades\Media;
 
 /**
  * @property \Illuminate\Database\Eloquent\Collection<Fileable> $files
@@ -76,8 +75,8 @@ class Configuration extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'type' => \ToneflixCode\DbConfig\Casts\ConfigType::class,
-        'value' => \ToneflixCode\DbConfig\Casts\ConfigValue::class,
+        'type' => \Toneflix\DbConfig\Casts\ConfigType::class,
+        'value' => \Toneflix\DbConfig\Casts\ConfigValue::class,
         'secret' => 'boolean',
         'autogrow' => 'boolean',
         'choices' => \Illuminate\Database\Eloquent\Casts\AsCollection::class,
@@ -160,7 +159,7 @@ class Configuration extends Model
         return Cache::remember(
             'laravel-dbconfig.configurations::build',
             null,
-            fn () => static::buildConfig()
+            fn() => static::buildConfig()
         );
     }
 
@@ -172,7 +171,7 @@ class Configuration extends Model
     public static function buildConfig(bool $loadSecret = false): \Illuminate\Support\Collection
     {
         return static::query()
-            ->when(! $loadSecret, fn ($query) => $query->where('secret', false))
+            ->when(! $loadSecret, fn($query) => $query->where('secret', false))
             ->get()
             ->mapWithKeys(function ($item) {
                 return [$item->key => $item->value];
@@ -192,8 +191,8 @@ class Configuration extends Model
     public function multiple(): Attribute
     {
         return new Attribute(
-            get: fn () => (count($this->choices ?? []) && $this->autogrow) || ($this->type === 'array' && $this->count),
-            set: fn ($value) => [
+            get: fn() => (count($this->choices ?? []) && $this->autogrow) || ($this->type === 'array' && $this->count),
+            set: fn($value) => [
                 'autogrow' => $value,
             ],
         );

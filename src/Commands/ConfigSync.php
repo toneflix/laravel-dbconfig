@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Commands;
+namespace Toneflix\DbConfig\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Collection;
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 if (! function_exists('dbconfig')) {
     /**

@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use Illuminate\Http\UploadedFile;
-use ToneflixCode\DbConfig\Helpers\Configure;
-use ToneflixCode\DbConfig\Tests\TestCase;
+use Toneflix\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Tests\TestCase;
 
 class ConfigTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Commands;
+namespace Toneflix\DbConfig\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\Console\Attribute\AsCommand;
-use ToneflixCode\DbConfig\Models\Configuration;
+use Toneflix\DbConfig\Models\Configuration;
 
 #[AsCommand(name: 'dbconfig:create')]
 class ConfigCreate extends Command

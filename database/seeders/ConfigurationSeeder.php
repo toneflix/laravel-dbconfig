@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Cache;
-use ToneflixCode\DbConfig\Models\Configuration;
+use Toneflix\DbConfig\Models\Configuration;
 
 class ConfigurationSeeder extends Seeder
 {

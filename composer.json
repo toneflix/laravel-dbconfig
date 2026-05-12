@@ -1,5 +1,5 @@
 {
-    "name": "toneflix-code/laravel-dbconfig",
+    "name": "toneflix/laravel-dbconfig",
     "description": "A Laravel package that allows you to configure your app using database entries with support for Arrays and files.",
     "keywords": [
         "api",
@@ -22,22 +22,22 @@
         }
     ],
     "require": {
-        "php": "^8.1|^8.2|^8.3",
-        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
-        "toneflix-code/laravel-fileable": "^2.1"
+        "php": "^8.3|^8.4",
+        "illuminate/support": "^12.0|^13.0",
+        "toneflix/laravel-fileable": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
-        "illuminate/contracts": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/contracts": "^12.0|^13.0",
         "laravel/pint": "^1.15",
-        "orchestra/testbench": "^7.4|^8.0|^9.4",
-        "pestphp/pest": "^2.34|^3.0",
-        "pestphp/pest-plugin-laravel": "^2.4|^3.1",
+        "orchestra/testbench": "^10.11|^11.1",
+        "pestphp/pest": "^4.4",
+        "pestphp/pest-plugin-laravel": "^4.1",
         "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {
-            "ToneflixCode\\DbConfig\\": "src"
+            "Toneflix\\DbConfig\\": "src"
         },
         "files": [
             "helpers/config.php"
@@ -45,9 +45,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "ToneflixCode\\DbConfig\\Tests\\": "tests",
-            "ToneflixCode\\DbConfig\\Tests\\Database\\Factories\\": "tests/database/factories",
-            "ToneflixCode\\DbConfig\\Tests\\Database\\Seeders\\": "tests/database/seeders"
+            "Toneflix\\DbConfig\\Tests\\": "tests",
+            "Toneflix\\DbConfig\\Tests\\Database\\Factories\\": "tests/database/factories",
+            "Toneflix\\DbConfig\\Tests\\Database\\Seeders\\": "tests/database/seeders"
         }
     },
     "scripts": {
@@ -64,6 +64,7 @@
             "@php vendor/bin/testbench serve"
         ],
         "analyse": "vendor/bin/phpstan analyse",
+        "pest": "./vendor/bin/pest",
         "test": "XDEBUG_MODE=coverage ./vendor/bin/pest --coverage --display-errors --testdox",
         "test-coverage": "vendor/bin/pest --coverage-clover",
         "format": "vendor/bin/pint"
@@ -77,10 +78,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ToneflixCode\\DbConfig\\DbConfigServiceProvider"
+                "Toneflix\\DbConfig\\DbConfigServiceProvider"
             ],
             "aliases": {
-                "ResourceModifier": "ToneflixCode\\DbConfig\\Facades\\DbConfig"
+                "ResourceModifier": "Toneflix\\DbConfig\\Facades\\DbConfig"
             }
         }
     }

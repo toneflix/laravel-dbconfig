@@ -1,11 +1,11 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Helpers;
+namespace Toneflix\DbConfig\Helpers;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use ToneflixCode\DbConfig\Models\Configuration;
+use Toneflix\DbConfig\Models\Configuration;
 
 class Configure
 {

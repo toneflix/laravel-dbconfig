@@ -1,11 +1,11 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Casts;
+namespace Toneflix\DbConfig\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
-use ToneflixCode\DbConfig\Models\Configuration;
-use ToneflixCode\LaravelFileable\Facades\Media;
+use Toneflix\DbConfig\Models\Configuration;
+use Toneflix\LaravelFileable\Facades\Media;
 
 // @codeCoverageIgnoreStart
 class ConfigValue implements CastsAttributes
@@ -51,8 +51,8 @@ class ConfigValue implements CastsAttributes
 
         return match (true) {
             $model->secret && request()->boolean('hide-secret') => '***********',
-            $type === 'file' => $model->files->map(fn ($f) => $f->files['file'])->first(null, $default),
-            $type === 'files' => $model->files->map(fn ($f) => $f->files['file']),
+            $type === 'file' => $model->files->map(fn($f) => $f->files['file'])->first(null, $default),
+            $type === 'files' => $model->files->map(fn($f) => $f->files['file']),
             in_array(mb_strtolower($type), ['bool', 'boolean']) => filter_var($value, FILTER_VALIDATE_BOOLEAN),
             in_array(mb_strtolower($type), ['json', 'array']) => collect(json_decode($value, true)),
             in_array(mb_strtolower($type), ['number', 'integer', 'float', 'int']) => (int) $value,

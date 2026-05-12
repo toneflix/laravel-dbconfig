@@ -1,20 +1,20 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Tests;
+namespace Toneflix\DbConfig\Tests;
 
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Orchestra\Testbench\TestCase as Orchestra;
-use ToneflixCode\DbConfig\DbConfigServiceProvider;
-use ToneflixCode\DbConfig\Tests\Database\Seeders\ConfigurationSeeder;
+use Toneflix\DbConfig\DbConfigServiceProvider;
+use Toneflix\DbConfig\Tests\Database\Seeders\ConfigurationSeeder;
 
 abstract class TestCase extends Orchestra
 {
     use RefreshDatabase;
 
     protected $factories = [
-        \ToneflixCode\DbConfig\Database\Factories\ConfigurationFactory::class,
+        \Toneflix\DbConfig\Database\Factories\ConfigurationFactory::class,
     ];
 
     protected function setUp(): void
@@ -26,10 +26,10 @@ abstract class TestCase extends Orchestra
         }
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'ToneflixCode\\DbConfig\\Database\\Factories\\'.
+            fn(string $modelName) => 'Toneflix\\DbConfig\\Database\\Factories\\' .
                 class_basename(
                     $modelName
-                ).'Factory'
+                ) . 'Factory'
         );
     }
 

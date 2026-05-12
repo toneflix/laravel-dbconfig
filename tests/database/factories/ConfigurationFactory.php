@@ -1,11 +1,11 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Tests\Database\Factories;
+namespace Toneflix\DbConfig\Tests\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\ToneflixCode\DbConfig\Models\Configuration>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Toneflix\DbConfig\Models\Configuration>
  */
 class ConfigurationFactory extends Factory
 {

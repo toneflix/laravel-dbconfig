@@ -11,7 +11,7 @@
 |
 */
 
-use ToneflixCode\DbConfig\Tests\TestCase;
+use Toneflix\DbConfig\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
 
@@ -44,7 +44,7 @@ expect()->extend('toBeOne', function () {
 function loadEnv()
 {
     // Load the .env file
-    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
     $dotenv->safeLoad();
 }
 
@@ -72,6 +72,6 @@ function present(callable $method)
     try {
         return $method();
     } catch (\Throwable $th) {
-        return $th->getMessage().' on line '.$th->getLine();
+        return $th->getMessage() . ' on line ' . $th->getLine();
     }
 }

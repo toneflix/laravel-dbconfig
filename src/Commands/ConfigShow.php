@@ -1,13 +1,13 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Commands;
+namespace Toneflix\DbConfig\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Console\ConfigShowCommand;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
 use Symfony\Component\Console\Attribute\AsCommand;
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 // @codeCoverageIgnoreStart
 #[AsCommand(name: 'dbconfig:show')]

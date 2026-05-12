@@ -1,10 +1,11 @@
 # Laravel DbConfig (Database Configuration)
 
 [![Test & Lint](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml)
-[![Latest Stable Version](https://img.shields.io/packagist/v/toneflix-code/laravel-dbconfig.svg)](https://packagist.org/packages/toneflix-code/laravel-dbconfig)
-[![Total Downloads](https://img.shields.io/packagist/dt/toneflix-code/laravel-dbconfig.svg)](https://packagist.org/packages/toneflix-code/laravel-dbconfig)
-[![License](https://img.shields.io/packagist/l/toneflix-code/laravel-dbconfig.svg)](https://packagist.org/packages/toneflix-code/laravel-dbconfig)
-[![PHP Version Require](https://img.shields.io/packagist/dependency-v/toneflix-code/laravel-dbconfig/php)](https://packagist.org/packages/toneflix-code/laravel-dbconfig)
+[![Latest Stable Version](https://img.shields.io/packagist/v/toneflix/laravel-dbconfig.svg)](https://packagist.org/packages/toneflix/laravel-dbconfig)
+[![2.x Downloads](https://img.shields.io/packagist/dt/toneflix/laravel-dbconfig.svg?label=2.x+Downloads)](https://packagist.org/packages/toneflix/laravel-dbconfig)
+[![<2.x Downloads](https://img.shields.io/packagist/dt/toneflix-code/laravel-dbconfig.svg?label=<2.x+Downloads)](https://packagist.org/packages/toneflix-code/laravel-dbconfig)
+[![License](https://img.shields.io/packagist/l/toneflix/laravel-dbconfig.svg)](https://packagist.org/packages/toneflix/laravel-dbconfig)
+[![PHP Version Require](https://img.shields.io/packagist/dependency-v/toneflix/laravel-dbconfig/php)](https://packagist.org/packages/toneflix/laravel-dbconfig)
 [![codecov](https://codecov.io/gh/toneflix/laravel-dbconfig/graph/badge.svg?token=2O7aFulQ9P)](https://codecov.io/gh/toneflix/laravel-dbconfig)
 
 <!-- ![GitHub Actions](https://github.com/toneflix/laravel-dbconfig/actions/workflows/run-tests.yml/badge.svg) -->
@@ -13,21 +14,36 @@ A Laravel package that enables app configuration using database entries with sup
 
 ## Features
 
--   Support for single and multiple file uploads.
--   Has `dbconfig()` helper function.
--   Support for custom tables.
--   Create configurations with `php artisan dbconfig:create` command.
--   Support for Arrays.
--   Configurations can be dbconfig:d.
--   Update config with `php artisan dbconfig:set` command.
+- Support for single and multiple file uploads.
+- Has `dbconfig()` helper function.
+- Support for custom tables.
+- Create configurations with `php artisan dbconfig:create` command.
+- Support for Arrays.
+- Configurations can be dbconfig:d.
+- Update config with `php artisan dbconfig:set` command.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require toneflix-code/laravel-dbconfig
+composer require toneflix/laravel-dbconfig
 ```
+
+## Upgrading
+
+### 1.x > 2.x
+
+When upgrading from `1.x` to `2.x`, take note of the breaking changes
+
+#### Dependencies
+
+- **PHP**: `2.x` only has support for PHP `^8.3|^8.4`
+- **Laravel**: `2.x` only has support for Laravel `^12.x|^13.x`
+
+#### Namespace
+
+We dropped the `ToneflixCode\DbConfig` namespace in favour of the much simpler `Toneflix\DbConfig`, take note of this and refactor your code as required.
 
 ### Package Discovery
 
@@ -36,14 +52,14 @@ Laravel automatically discovers and publishes service providers but optionally a
 In the $providers array add the service providers for this package.
 
 ```php
-ToneflixCode\DbConfig\DbConfigServiceProvider::class
+Toneflix\DbConfig\DbConfigServiceProvider::class
 ```
 
 If you use Laravel >= 11, open your `bootstrap/providers.php` and the above line to the array.
 
 ```php
 return [
-    ToneflixCode\DbConfig\DbConfigServiceProvider::class,
+    Toneflix\DbConfig\DbConfigServiceProvider::class,
 ];
 ```
 
@@ -90,7 +106,7 @@ If you have multple options and do not want to add them one after the other, you
 To access your saved configuration, you can call the `config` helper method on the `Configure` class.
 
 ```php
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 dd(Configure::config(key: 'app_name'));
 ```
@@ -106,7 +122,7 @@ dd(dbconfig(key: 'app_name'));
 If you do not provide a key when calling `Configure::config()` or `dbconfig()` an instance of `Illuminate\Support\Collection` will be returned with all available configuration options as [key => value] pair collection.
 
 ```php
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 dd(Configure::config());
 ```
@@ -122,7 +138,7 @@ dd(dbconfig());
 Passing an array to the `dbconfig` function or the `config` method will imply that you want to update the configuration option.
 
 ```php
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 Configure::config(key: ['app_name' => 'Toneflix']);
 ```
@@ -163,7 +179,7 @@ When creating your options, if you set the `secret` attribute to `true`, the val
 To allow secret values to be visible, when you call the `Configure::config()` or `dbconfig()` methods, set the `loadSecret` argument to true, this will ensure that, even secret values are visible.
 
 ```php
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 Configure::config(key: ['app_name' => 'Toneflix'], loadSecret: true);
 ```
@@ -182,14 +198,14 @@ Whe the configuration type is `files`, the files will be uploaded and you will g
 
 ### Storage path
 
-The library uses `toneflix-code/laravel-fileable` for storing files, you can configure the upload path and othe options by modifying the `upload_collection` property of the `laravel-dbconfig` configuration file or add a `dbconfig` collection to the `toneflix-fileable` configuration.
+The library uses `toneflix/laravel-fileable` for storing files, you can configure the upload path and othe options by modifying the `upload_collection` property of the `laravel-dbconfig` configuration file or add a `dbconfig` collection to the `toneflix-fileable` configuration.
 
 ### Saving configuration with file values
 
 To save a configuration with a file value, simply pass an instance of `Illuminate\Http\UploadedFile` as a value when setting the configuration, the lirary takes care of the rest.
 
 ```php
-use ToneflixCode\DbConfig\Helpers\Configure;
+use Toneflix\DbConfig\Helpers\Configure;
 
 Configure::config(key: ['logo' => request()->file('logo')]);
 ```
@@ -284,7 +300,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## TODO
 
--   [x] Add dbconfig: status to about command.
+- [x] Add dbconfig: status to about command.
 
 ## Contributing
 
@@ -296,8 +312,8 @@ If you discover any security related issues, please email code@toneflix.com.ng i
 
 ## Credits
 
--   [Toneflix Code](https://github.com/toneflix)
--   [All Contributors](../../contributors)
+- [Toneflix Code](https://github.com/toneflix)
+- [All Contributors](../../contributors)
 
 ## License
 
