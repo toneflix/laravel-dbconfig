@@ -48,7 +48,10 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update --dev
 
       - name: Install dependencies
-        run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
+        run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --optimize-autoloader
+
+      - name: Dump Autoload
+        run: composer dump-autoload
 
       - name: List Installed Dependencies
         run: composer show -D
