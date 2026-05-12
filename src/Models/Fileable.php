@@ -96,7 +96,7 @@ class Fileable extends Model
 
                 $meta_type = isset($this->meta['type']) ? ".{$this->meta['type']}" : '';
 
-                $mediaPath = $this->mediaPaths[$this->fileable_type . $meta_type] ?? 'dbconfig';
+                $mediaPath = $this->mediaPaths[$this->fileable_type.$meta_type] ?? 'dbconfig';
 
                 if ($mediaPath === 'private.music') {
                     $diskName = 'gpaf_media';
@@ -107,7 +107,7 @@ class Fileable extends Model
                 if ($this->fileable->processed_at) {
                     return 100;
                 } elseif ($diskName === 'gpaf_media') {
-                    $progress = Cache::get('media.segment.' . str($this->file . '.' . $this->id)->toString(), 0);
+                    $progress = Cache::get('media.segment.'.str($this->file.'.'.$this->id)->toString(), 0);
                 }
 
                 return $progress;
@@ -118,7 +118,7 @@ class Fileable extends Model
     public function progressComplete(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->progress >= 100 ? '100% completed!' : "{$this->progress}% processing...",
+            get: fn () => $this->progress >= 100 ? '100% completed!' : "{$this->progress}% processing...",
         );
     }
 
@@ -140,7 +140,7 @@ class Fileable extends Model
             $link = $this->get_files['file']['dynamicLink'];
         }
 
-        return Attribute::make(get: fn() => $link);
+        return Attribute::make(get: fn () => $link);
     }
 }
 // @codeCoverageIgnoreEnd

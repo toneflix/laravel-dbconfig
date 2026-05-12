@@ -3,9 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Toneflix\DbConfig\Models\Configuration;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Toneflix\DbConfig\Models\Configuration>
+ * @extends Factory<Configuration>
  */
 class ConfigurationFactory extends Factory
 {

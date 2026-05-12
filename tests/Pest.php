@@ -11,6 +11,7 @@
 |
 */
 
+use Dotenv\Dotenv;
 use Toneflix\DbConfig\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);
@@ -44,7 +45,7 @@ expect()->extend('toBeOne', function () {
 function loadEnv()
 {
     // Load the .env file
-    $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+    $dotenv = Dotenv::createImmutable(__DIR__.'/..');
     $dotenv->safeLoad();
 }
 
@@ -61,7 +62,7 @@ if (! function_exists('json_validate')) {
             json_decode($json, false, $depth, $flags | JSON_THROW_ON_ERROR);
 
             return true;
-        } catch (\JsonException $e) {
+        } catch (JsonException $e) {
             return false;
         }
     }
@@ -71,7 +72,7 @@ function present(callable $method)
 {
     try {
         return $method();
-    } catch (\Throwable $th) {
-        return $th->getMessage() . ' on line ' . $th->getLine();
+    } catch (Throwable $th) {
+        return $th->getMessage().' on line '.$th->getLine();
     }
 }

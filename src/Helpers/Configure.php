@@ -2,6 +2,7 @@
 
 namespace Toneflix\DbConfig\Helpers;
 
+use Illuminate\Http\Testing\File;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -71,13 +72,13 @@ class Configure
     {
         if (is_array($value) && isset($value[0])) {
             foreach ($value as $val) {
-                if ($val instanceof UploadedFile || $val instanceof \Illuminate\Http\Testing\File) {
+                if ($val instanceof UploadedFile || $val instanceof File) {
                     return true;
                 }
             }
         }
 
-        if ($value instanceof UploadedFile || $value instanceof \Illuminate\Http\Testing\File) {
+        if ($value instanceof UploadedFile || $value instanceof File) {
             return true;
         }
 

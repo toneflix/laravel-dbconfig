@@ -3,13 +3,17 @@
 namespace Toneflix\DbConfig\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Toneflix\DbConfig\Casts\ConfigType;
+use Toneflix\DbConfig\Casts\ConfigValue;
 use Toneflix\DbConfig\Helpers\Configure;
 use Toneflix\LaravelFileable\Facades\Media;
 
@@ -75,11 +79,11 @@ class Configuration extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'type' => \Toneflix\DbConfig\Casts\ConfigType::class,
-        'value' => \Toneflix\DbConfig\Casts\ConfigValue::class,
+        'type' => ConfigType::class,
+        'value' => ConfigValue::class,
         'secret' => 'boolean',
         'autogrow' => 'boolean',
-        'choices' => \Illuminate\Database\Eloquent\Casts\AsCollection::class,
+        'choices' => AsCollection::class,
     ];
 
     /**
@@ -107,7 +111,7 @@ class Configuration extends Model
      * If an array is passed as the key, we will assume you want to set an array of values.
      *
      * @param  array<string, mixed>|string|null  $key
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public static function setConfig(
         string|array|null $key = null,
@@ -159,19 +163,19 @@ class Configuration extends Model
         return Cache::remember(
             'laravel-dbconfig.configurations::build',
             null,
-            fn() => static::buildConfig()
+            fn () => static::buildConfig()
         );
     }
 
     /**
      * Build the configuration collection
      *
-     * @return \Illuminate\Support\Collection<TMapWithKeysKey, TMapWithKeysValue>
+     * @return Collection<TMapWithKeysKey, TMapWithKeysValue>
      */
-    public static function buildConfig(bool $loadSecret = false): \Illuminate\Support\Collection
+    public static function buildConfig(bool $loadSecret = false): Collection
     {
         return static::query()
-            ->when(! $loadSecret, fn($query) => $query->where('secret', false))
+            ->when(! $loadSecret, fn ($query) => $query->where('secret', false))
             ->get()
             ->mapWithKeys(function ($item) {
                 return [$item->key => $item->value];
@@ -191,8 +195,8 @@ class Configuration extends Model
     public function multiple(): Attribute
     {
         return new Attribute(
-            get: fn() => (count($this->choices ?? []) && $this->autogrow) || ($this->type === 'array' && $this->count),
-            set: fn($value) => [
+            get: fn () => (count($this->choices ?? []) && $this->autogrow) || ($this->type === 'array' && $this->count),
+            set: fn ($value) => [
                 'autogrow' => $value,
             ],
         );
