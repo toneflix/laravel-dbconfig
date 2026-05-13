@@ -59,7 +59,7 @@ jobs:
         run: composer show -D
 
       - name: Execute tests
-        run: ./vendor/bin/pest --ci --coverage --display-errors --testdox
+        run: ./vendor/bin/pest --ci --coverage --display-errors --testdox --coverage-clover ./build/logs/clover.xml
         env:
           XDEBUG_MODE: coverage
 
