@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use Toneflix\DbConfig\Tests\TestCase;
+use ToneflixCode\DbConfignfig\Tests\TestCase;
 
 class CommandsTest extends TestCase
 {

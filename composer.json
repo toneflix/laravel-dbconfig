@@ -45,6 +45,7 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "Tests\\": "tests",
             "Toneflix\\DbConfig\\Tests\\": "tests",
             "Toneflix\\DbConfig\\Tests\\Database\\Factories\\": "tests/database/factories",
             "Toneflix\\DbConfig\\Tests\\Database\\Seeders\\": "tests/database/seeders"
