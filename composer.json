@@ -24,7 +24,7 @@
     "require": {
         "php": "^8.3|^8.4",
         "illuminate/support": "^12.0|^13.0",
-        "toneflix/laravel-fileable": "^3.0"
+        "toneflix/laravel-fileable": "^3.0.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
