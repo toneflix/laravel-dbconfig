@@ -47,7 +47,7 @@ jobs:
       - name: Install Matrix dependencies
         if: ${{ matrix.testbench }}
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "toneflix/laravel-fileable:3.0.3" --no-interaction --no-update --dev
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "toneflix/laravel-fileable:^3.0.2" --no-interaction --no-update --dev
 
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction --optimize-autoloader
