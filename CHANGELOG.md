@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-dbconfig` will be documented in this file
 
+## 2.0.0 - 2026-05-13
+
+### What's Changed
+
+refactor: update namespace and package name from toneflix-code to toneflix
+
+- Changed package name in composer.json and README.md
+- Updated namespaces in various files to reflect the new package structure
+- Adjusted configuration and factory files accordingly
+- Modified test cases to align with the new namespace
+
+**Full Changelog**: https://github.com/toneflix/laravel-dbconfig/compare/1.1.4...2.0.0
+
 ## 1.1.4 - 2026-02-01
 
 ### What's Changed
