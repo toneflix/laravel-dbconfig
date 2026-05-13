@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace ToneflixCode\DbConfig\Tests\Feature;
 
 use Illuminate\Http\UploadedFile;
 use Toneflix\DbConfig\Helpers\Configure;

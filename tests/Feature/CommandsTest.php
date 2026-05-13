@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Feature;
+namespace ToneflixCode\DbConfig\Tests\Feature;
 
-use ToneflixCode\DbConfignfig\Tests\TestCase;
+use Toneflix\DbConfig\Tests\TestCase;
 
 class CommandsTest extends TestCase
 {
