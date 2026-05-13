@@ -1,6 +1,6 @@
 <?php
 
-namespace ToneflixCode\DbConfig\Tests\Feature;
+namespace Toneflix\DbConfig\Tests\Feature;
 
 use Toneflix\DbConfig\Tests\TestCase;
 
